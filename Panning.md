@@ -28,8 +28,8 @@ Game:
  State : template of the game, looping depending on the player in the state
 
  Behavour:
- - contain tge user I/0
- - include amethod that access the math question method in question Class for the player answer
+ - contain the user I/0
+ - include a method that access the math question method in question Class for the player answer
  - include a method to change player turn or change round
  - include a method for when a player has no life the other player win
  - method to asses players answer

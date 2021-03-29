@@ -13,9 +13,5 @@ class Player
   
   end
 
-
-
 end
 
-newPlayer = Player.new ("Elodie")
-puts newPlayer.name
