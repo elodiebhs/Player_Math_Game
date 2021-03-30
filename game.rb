@@ -3,10 +3,10 @@ class Game
 def start
   # player1
   newPlayer1 = Player.new ("Player 1")
-  puts newPlayer1.name
+  # puts newPlayer1.name
   # player2
   newPlayer2 = Player.new ("Player 2")
-  puts newPlayer2.name
+  # puts newPlayer2.name
 
   # we us a cumulator
   cumulator = 1
@@ -15,7 +15,12 @@ def start
       # initialize a new question
       @question = Question.new
       # show the question
-      puts @question.show_question
+      if cumulator %2 == 0
+        puts "Player 2: #{@question.show_question}"
+      else 
+        puts "Player 1: #{@question.show_question}"
+      end
+
       # player enter an answer
       answer = gets.chomp
       # check answer
@@ -41,7 +46,14 @@ def start
       # we only want New turn to show if score > 0
       if (newPlayer1.lives > 0 ) && (newPlayer2.lives > 0)
       puts "---NEW TURN ---"
-      end
+      
+      elsif cumulator % 2 == 0
+      puts "Player 1 win the score of #{newPlayer1.lives} / 3"
+      break
+      else 
+      puts "Player 2 win the score of #{newPlayer2.lives} / 3"
+      break
+     end
 
 
       # cumulator
@@ -51,18 +63,12 @@ def start
 
     ##---------- end of while loop----------
    
-    # we need to -1 because we need to compensate the extrat +1 at the end of the while loop
-    if cumulator % 2 == 0
-      puts "Player 2 win the score of #{newPlayer2.lives} / 3"
-
-    else 
-      puts "Player 1 win the score of #{newPlayer1.lives} / 3"
-    end
+    
 
     puts "---GAME OVER ---"
     puts "bye"
 
-end
+  end
 
 end
 
