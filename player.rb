@@ -13,5 +13,11 @@ class Player
   
   end
 
+  def reduce_life
+    # self = this
+    self.lives -= 1
+  end
+
+  
 end
 

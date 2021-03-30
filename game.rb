@@ -8,7 +8,10 @@ def start
   newPlayer2 = Player.new ("Player 2")
   puts newPlayer2.name
 
-    while newPlayer1.lives > 0 do
+  # cumulator
+  cumulator = 1
+
+    while (newPlayer1.lives && newPlayer2.lives) > 0 do
       # initialize a new question
       @question = Question.new
       # show the question
@@ -16,10 +19,49 @@ def start
       # player enter an answer
       answer = gets.chomp
       # check answer
-      puts @question.check_answer(answer)
+      if @question.check_answer(answer) == false
+        # check if it's even ---(Player 2 is always even because of our cumulator)
+        if cumulator % 2 == 0
+          newPlayer2.reduce_life
+          puts "player 2 made a mistake"
+        else
+          newPlayer1.reduce_life
+          puts "player 1 made a mistake"
+        end
+
+      else
+        puts "player answered correclty"
+      end
+
+
+      # new turn puts
+      puts "P1 :  #{newPlayer1.lives} / 3 vs P2 :  #{newPlayer2.lives} / 3"
+
+
+      # we only want New turn to show if score > 0
+      if (newPlayer1.lives > 0 ) && (newPlayer2.lives > 0)
+      puts "---NEW TURN ---"
+      end
+
+
+      # cumulator
+      cumulator= cumulator + 1
+
     end
+
+    ##---------- end of while loop----------
    
-    
+    # we need to -1 because we need to compensate the extrat +1 at the end of the while loop
+    if cumulator % 2 == 0
+      puts "Player 2 win the score of #{newPlayer2.lives} / 3"
+
+    else 
+      puts "Player 1 win the score of #{newPlayer1.lives} / 3"
+    end
+
+    puts "---GAME OVER ---"
+    puts "bye"
+
 end
 
 end
