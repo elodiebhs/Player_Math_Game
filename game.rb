@@ -8,7 +8,7 @@ def start
   newPlayer2 = Player.new ("Player 2")
   puts newPlayer2.name
 
-  # cumulator
+  # we us a cumulator
   cumulator = 1
 
     while (newPlayer1.lives && newPlayer2.lives) > 0 do
